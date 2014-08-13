@@ -15,14 +15,14 @@ namespace BasicDataTypes
         static void Main( string[] args )
         {
             Console.WriteLine("***** Fun with Basic Data Types *****\n");
-            LocalVarDeclarations();
-            NewingDataTypes();
-            ObjectFunctionality();
-            DataTypeFunctionality();
+            //LocalVarDeclarations();
+            //NewingDataTypes();
+            //ObjectFunctionality();
+            //DataTypeFunctionality();
             CharFunctionality();
-            ParseFromStrings();
-            UseDatesAndTimes();
-            UseBigInteger();
+            //ParseFromStrings();
+            //UseDatesAndTimes();
+            //UseBigInteger();
 
             Console.ReadLine();
         }
