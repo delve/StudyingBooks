@@ -1,0 +1,22 @@
+<!-- Window def -->
+<Window x:Class="WpfAppAllXaml.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Title="A Window built using 100% XAML... yay."
+  Height="200" Width="300"
+  WindowStartupLocation="CenterScreen">
+
+	<!-- window has a button for content. how exciting. -->
+	<Button x:Name="btnExitApp" Width="133" Height="24"
+		Content="Close Window" Click="btnExitApp_Clicked" />
+		
+	<!-- implementation of the button click handler... omg this is clunky -->
+	<x:Code>
+		<![CDATA[
+			private void btnExitApp_Clicked(object sender, RoutedEventArgs e)
+			{
+				this.Close();
+			}
+		]]>
+	</x:Code>
+</Window>
