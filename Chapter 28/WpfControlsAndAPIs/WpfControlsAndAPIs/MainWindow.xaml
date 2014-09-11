@@ -1,0 +1,85 @@
+﻿<Window x:Class="WpfControlsAndAPIs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:a="clr-namespace:System.Windows.Annotations;assembly=PresentationFramework"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TabControl Name="myTabSystem" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="517">
+            <TabItem x:Name="TabInkAPI" Header="Ink API">
+                <StackPanel Background="#FFE5E5E5">
+                    <ToolBar x:Name="InkToolbar" Height="60">
+                        <Border Margin="0,0,0,38" Width="90">
+                            <StackPanel Orientation="Vertical" Margin="0,0,0,-41" HorizontalAlignment="Left" Width="90">
+                                <RadioButton x:Name="radioInk" Content="Ink mode!" GroupName="InkMode" Click="RadioButtonClicked"/>
+                                <RadioButton x:Name="radioErase" Content="Erase mode!" GroupName="InkMode" Click="RadioButtonClicked"/>
+                                <RadioButton x:Name="radioSelect" Content="Select mode!" GroupName="InkMode" Click="RadioButtonClicked"/>
+                            </StackPanel>
+                        </Border>
+                        <Separator Height="54" Margin="0" Width="3"/>
+                        <ComboBox x:Name="comboColors" SelectionChanged="ColorChanged" Height="50" Width="170" HorizontalContentAlignment="Left" Margin="0,2,0,3">
+                            <StackPanel Orientation="Horizontal" Tag="Red">
+                                <Ellipse Fill="Red" Height="30" Width="50" />
+                                <ComboBoxItem Content="Red" VerticalContentAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Tag="Green">
+                                <Ellipse Fill="Green" Height="30" Width="50" />
+                                <ComboBoxItem Content="Green" VerticalContentAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Tag="Blue">
+                                <Ellipse Fill="Blue" Height="30" Width="50" />
+                                <ComboBoxItem Content="Blue" VerticalContentAlignment="Center" />
+                            </StackPanel>
+                        </ComboBox>
+                        <Button x:Name="btnSave" Content="Save" Height="55" VerticalAlignment="Top" Width="58" Click="SaveData"/>
+                        <Button x:Name="btnLoad" Content="Load" Height="55" VerticalAlignment="Top" Width="55" Click="LoadData"/>
+                        <Button x:Name="btnClear" Content="Clear" Height="55" VerticalAlignment="Top" Width="56" Click="Clear"/>
+                    </ToolBar>
+                    <InkCanvas x:Name="myInkCanvas" Background="#FFC8F3F9"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="TabDocuments" Header="Documents">
+                <StackPanel>
+                    <ToolBar>
+                        <Button BorderBrush="Green" Content="Add Sticky Note" 
+                                Command="a:AnnotationService.CreateTextStickyNoteCommand" />
+                        <Button BorderBrush="Green" Content="Delete Sticky Notes" 
+                                Command="a:AnnotationService.DeleteStickyNotesCommand" />
+                        <Button BorderBrush="Green" Content="Highlight Text" 
+                                Command="a:AnnotationService.CreateHighlightCommand" />
+                        <Button x:Name="btnSaveDoc" Content="Save Doc" Height="22" VerticalAlignment="Top" Width="75" HorizontalAlignment="Stretch"/>
+                        <Button x:Name="btnLoadDoc" Content="Load Doc" Height="22" VerticalAlignment="Top" Width="75" HorizontalAlignment="Stretch"/>
+                    </ToolBar>
+                    <FlowDocumentReader x:Name="myDocumentReader" Height="261">
+                        <FlowDocument>
+                            <Section Foreground="Yellow" Background="Black">
+                                <Paragraph FontSize="20">
+                                    Fun with WPS WPF Documents API
+                                </Paragraph>
+                             </Section>
+                               <List x:Name="listOfFunFacts" />
+                                <Paragraph x:Name="paraBodyText" />
+                        </FlowDocument>
+                    </FlowDocumentReader>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="TabDataBinding" Header="Data Binding">
+                <!-- all child elements will inherit the DataContext binding -->
+                <StackPanel Background="#FFE5E5E5" DataContext="{Binding ElementName=mySB}">
+                    <Label Content="Move the scrollbar to see the current value"/>
+                    <!-- The scroll bar is the data source for the binding -->
+                    <ScrollBar x:Name="mySB" Height="30" Width="Auto" Orientation="Horizontal" Minimum="1" Maximum="100" SmallChange="1"/>
+                    <!-- this label is bound to the scrollbar -->
+                    <Label x:Name="labelSBThumb" Content="0" Height="30" BorderBrush="Blue" BorderThickness="2"/>
+                    <!-- only ~need~ to declare the binding path since the context is inherited from the parent element -->
+                    <Button Content="Click" Height="143" FontSize="{Binding Value}"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="TabDataGrid" Header="Data Grid">
+                <StackPanel Background="#FFE5E5E5">
+                    <DataGrid x:Name="gridInventory" Height="288" />
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
