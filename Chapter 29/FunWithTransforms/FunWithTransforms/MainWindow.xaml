@@ -1,0 +1,32 @@
+﻿<Window x:Class="FunWithTransforms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="267*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="250">
+            <Button x:Name="btnSkew" Content="Skew" Click="BtnSkew_Click"/>
+            <Button x:Name="btnRotate" Content="Rotate" Click="BtnRotate_Click"/>
+            <Button x:Name="btnFlip" Content="Flip" Click="BtnFlip_Click"/>
+        </StackPanel>
+        <Canvas x:Name="myCanvas" Grid.Column="1" HorizontalAlignment="Left" Height="300" Margin="10,10,0,0" VerticalAlignment="Top" Width="247" Background="LightBlue">
+            <Canvas.LayoutTransform>
+                <TransformGroup/>
+            </Canvas.LayoutTransform>
+            <Rectangle Height="138" Canvas.Left="70" Stroke="Purple" Canvas.Top="80" Width="45">
+                <Rectangle.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="#FF5F10EA" Offset="0.462"/>
+                        <GradientStop Color="#FF6B0730" Offset="0.914"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Line Width="100" Height="75" X1="20" Y1="20" X2="95" Y2="70" Stroke="Red" StrokeEndLineCap="Square" StrokeStartLineCap="Round" StrokeThickness="8" />
+        </Canvas>
+
+    </Grid>
+</Window>
