@@ -1,10 +1,7 @@
-ProCSharp6thEdExamples
-======================
+Stuy Books
+==========
 
-Just my hacking around on the downloadable examples from the book
+Just my hacking around on the downloadable examples from the various books I'm studying
 
 
-Publishers webpage (includes downlad for originals):
-http://www.apress.com/9781430242338
-
-Note: This repo will only contain the code. There's no point in including the appendix PDFs and so they're deliberately left out.
+Organized by subfolders, individual book folders contain additional details.
