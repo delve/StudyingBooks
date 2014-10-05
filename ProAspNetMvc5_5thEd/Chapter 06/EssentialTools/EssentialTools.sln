@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EssentialTools", "EssentialTools\EssentialTools.csproj", "{65092058-22E7-4EE3-950B-125E673BA970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EssentialTools.Tests", "EssentialTools.Tests\EssentialTools.Tests.csproj", "{BB10E1A6-B74B-4EC1-A352-160E35C8FAC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65092058-22E7-4EE3-950B-125E673BA970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65092058-22E7-4EE3-950B-125E673BA970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65092058-22E7-4EE3-950B-125E673BA970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65092058-22E7-4EE3-950B-125E673BA970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB10E1A6-B74B-4EC1-A352-160E35C8FAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB10E1A6-B74B-4EC1-A352-160E35C8FAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB10E1A6-B74B-4EC1-A352-160E35C8FAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB10E1A6-B74B-4EC1-A352-160E35C8FAC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
