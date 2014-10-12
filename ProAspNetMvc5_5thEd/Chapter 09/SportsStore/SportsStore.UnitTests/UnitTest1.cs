@@ -19,7 +19,7 @@ namespace SportsStore.UnitTests
         /// Helper function, returns a mock repository for testing with
         /// </summary>
         /// <returns>Mock IProductsRepository to test with</returns>
-        public Mock<IProductsRepository> GetMockRepository()
+        public IProductsRepository GetMockRepository()
         {
             Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
@@ -30,7 +30,7 @@ namespace SportsStore.UnitTests
                     new Product{ProductID = 4, Name = "P4", Category = "Cat3"},
                     new Product{ProductID = 5, Name = "P5", Category = "Cat2"}
                 });
-            return mock;
+            return mock.Object;
         }
 
         /// <summary>
@@ -40,8 +40,8 @@ namespace SportsStore.UnitTests
         public void CanPaginate()
         {
             // Arrange
-            Mock<IProductsRepository> mock = GetMockRepository();
-            ProductController controller = new ProductController(mock.Object);
+            IProductsRepository mock = GetMockRepository();
+            ProductController controller = new ProductController(mock);
             controller.PageSize = 3;
 
             // Act
@@ -61,8 +61,8 @@ namespace SportsStore.UnitTests
         public void CanPaginateProductListViewModel()
         {
             // Arrange
-            Mock<IProductsRepository> mock = GetMockRepository();
-            ProductController controller = new ProductController(mock.Object);
+            IProductsRepository mock = GetMockRepository();
+            ProductController controller = new ProductController(mock);
             controller.PageSize = 3;
 
             // Act
@@ -114,8 +114,8 @@ namespace SportsStore.UnitTests
         public void CanFilterProducts()
         {
             // Arrange
-            Mock<IProductsRepository> mock = GetMockRepository();
-            ProductController controller = new ProductController(mock.Object);
+            IProductsRepository mock = GetMockRepository();
+            ProductController controller = new ProductController(mock);
             controller.PageSize = 3;
 
             // Act
@@ -134,8 +134,8 @@ namespace SportsStore.UnitTests
         public void CanCreateCategoryList()
         {
             // Arrange
-            Mock<IProductsRepository> mock = GetMockRepository();
-            NavController target = new NavController(mock.Object);
+            IProductsRepository mock = GetMockRepository();
+            NavController target = new NavController(mock);
 
             // Act
             string[] results = ((IEnumerable<string>)target.Menu().Model).ToArray();
@@ -154,8 +154,8 @@ namespace SportsStore.UnitTests
         public void IndicatesSelectedCategory()
         {
             // Arrange
-            Mock<IProductsRepository> mock = GetMockRepository();
-            NavController target = new NavController(mock.Object);
+            IProductsRepository mock = GetMockRepository();
+            NavController target = new NavController(mock);
             string categoryToSelect = "Cat3";
 
             // Act
@@ -172,8 +172,8 @@ namespace SportsStore.UnitTests
         public void CanGenerateCorrectProductCountForPaging()
         {
             // Arrange
-            Mock<IProductsRepository> mock = GetMockRepository();
-            ProductController target = new ProductController(mock.Object);
+            IProductsRepository mock = GetMockRepository();
+            ProductController target = new ProductController(mock);
             target.PageSize = 3;
 
             // Act
