@@ -9,3 +9,7 @@ All pre-reqs are in the gitpod
 Open a GitPod
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/delve/StudyingBooks/-/tree/master/TheGoWorkshop/ReadMe.md)
+
+# TODOs
+
+TODO: try to get [file context URL](https://www.gitpod.io/docs/context-urls#file-context) working for the above Gitpod links

@@ -1,4 +1,4 @@
-Stuy Books
+Study Books
 ==========
 
 Just my hacking around on the downloadable examples from the various books I'm studying
