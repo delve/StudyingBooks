@@ -1,0 +1,3 @@
+[submodule "TheGoWorkshop/codebundle"]
+	path = TheGoWorkshop/codebundle
+	url = https://github.com/PacktWorkshops/The-Go-Workshop.git
