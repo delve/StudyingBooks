@@ -29,7 +29,7 @@ func calculateReviewScore(review map[string]interface{}) float64 {
 		case string:
 			score += ratings[string(v)]
 		default:
-			panic(errors.New(fmt.Sprintf("Unknown rating %v", v)))
+			panic(errors.New(fmt.Sprintf("unknown rating %v", v)))
 		}
 	}
 	return float64(score) / float64(len(review))
