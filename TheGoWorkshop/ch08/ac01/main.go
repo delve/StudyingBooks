@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 
 	"example.com/m/payroll"
@@ -29,7 +28,7 @@ func calculateReviewScore(review map[string]interface{}) float64 {
 		case string:
 			score += ratings[string(v)]
 		default:
-			panic(errors.New(fmt.Sprintf("unknown rating %v", v)))
+			panic(fmt.Errorf("unknown rating %v", v))
 		}
 	}
 	return float64(score) / float64(len(review))
