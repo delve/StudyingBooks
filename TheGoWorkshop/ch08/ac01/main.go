@@ -6,8 +6,6 @@ import (
 	"example.com/m/payroll"
 )
 
-type rating float64
-
 var ratings = map[string]int{}
 
 type Payer interface {
