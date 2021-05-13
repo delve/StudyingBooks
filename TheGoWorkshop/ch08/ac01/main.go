@@ -3,51 +3,16 @@ package main
 import (
 	"errors"
 	"fmt"
-	
+
+	"example.com/m/payroll"
 )
 
 type rating float64
 
-var ratings = map[string]int{
-	"Unsatisfactory": 1,
-	"Poor":           2,
-	"Fair":           3,
-	"Good":           4,
-	"Excellent":      5,
-}
-
-type Developer struct {
-	Individual        Employee
-	HourlyRate        int
-	HoursWorkedInYear int
-	Review            map[string]interface{}
-}
-
-type Manager struct {
-	Individual     Employee
-	Salary         int
-	CommissionRate float64
-}
+var ratings = map[string]int{}
 
 type Payer interface {
 	Pay() (string, float64)
-}
-
-func (e Employee) FullName() string {
-	return fmt.Sprintf("%s %s", e.FirstName, e.LastName)
-}
-
-func (d Developer) Pay() (string, float64) {
-	name := d.Individual.FullName()
-	netPay := float64(d.HourlyRate * d.HoursWorkedInYear)
-	return name, netPay
-}
-
-func (m Manager) Pay() (string, float64) {
-	name := m.Individual.FullName()
-	salary := float64(m.Salary)
-	netPay := salary + (salary * m.CommissionRate)
-	return name, netPay
 }
 
 func payDetails(p Payer) {
@@ -70,8 +35,22 @@ func calculateReviewScore(review map[string]interface{}) float64 {
 	return float64(score) / float64(len(review))
 }
 
-func reviewDetails(d Developer) {
+func reviewDetails(d payroll.Developer) {
 	fmt.Println(d.Individual.FullName(), " got a review rating of ", calculateReviewScore(d.Review))
+}
+
+func init() {
+	fmt.Println("Greetz")
+}
+
+func init() {
+	fmt.Println("Initializing")
+	ratings["Unsatisfactory"] = 1
+	ratings["Poor"] = 2
+	ratings["Fair"] = 3
+	ratings["Good"] = 4
+	ratings["Excellent"] = 5
+
 }
 
 func main() {
@@ -82,18 +61,18 @@ func main() {
 	employeeReview["problemsolving"] = 4
 	employeeReview["dependability"] = "Unsatisfactory"
 	employees := []interface{}{
-		Manager{Individual: Employee{FirstName: "Mr.", Id: 1, LastName: "Boss"}, Salary: 150000, CommissionRate: .07},
-		Developer{Individual: Employee{FirstName: "Eric", Id: 1, LastName: "Davis"}, HourlyRate: 35, HoursWorkedInYear: 2400, Review: employeeReview},
+		payroll.Manager{Individual: payroll.Employee{FirstName: "Mr.", Id: 1, LastName: "Boss"}, Salary: 150000, CommissionRate: .07},
+		payroll.Developer{Individual: payroll.Employee{FirstName: "Eric", Id: 1, LastName: "Davis"}, HourlyRate: 35, HoursWorkedInYear: 2400, Review: employeeReview},
 	}
 	for _, t := range employees {
 		switch v := t.(type) {
-		case Developer:
+		case payroll.Developer:
 			reviewDetails(v)
 			payDetails(v)
-		case Manager:
+		case payroll.Manager:
 			payDetails(v)
 		default:
-			panic(errors.New(fmt.Sprintf("Unknown employee type %v", v)))
+			panic(fmt.Errorf("unknown employee type %v", v))
 		}
 	}
 }
